@@ -6,12 +6,13 @@ jobs:
     container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - uses: iterative/setup-cml@v1
+      # - uses: actions/setup-python@v2
+      # - uses: iterative/setup-cml@v1
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          pip install --upgrade pip 
           pip install -r requirements.txt
           echo "TRAINING STARTING"
           python train.py
