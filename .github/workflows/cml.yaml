@@ -12,8 +12,13 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install -r requirements.txt
+          echo "TRAINING STARTING"
           python train.py
+          echo "TRAINING COMPLETE"
 
           cat metrics.txt >> report.md
           cml publish plot.png --md >> report.md
           cml send-comment report.md
+
+          echo "MODEL METRICS"
+          cat metrics.txt
