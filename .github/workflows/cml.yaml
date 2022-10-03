@@ -1,25 +1,25 @@
-name: model-training
-on: [push]
+name: "model_training"
+on: push
 jobs:
   run:
-    runs-on: [ubuntu-latest]
+    runs-on: [self-hosted]
     container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: iterative/setup-cml@v1
+      # - uses: iterative/setup-cml@v1
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          pip install --upgrade pip
           pip install -r requirements.txt
           echo "TRAINING STARTING"
           python train.py
           echo "TRAINING COMPLETE"
-
           cat metrics.txt >> report.md
           cml publish plot.png --md >> report.md
           cml send-comment report.md
-
           echo "MODEL METRICS"
           cat metrics.txt
+
