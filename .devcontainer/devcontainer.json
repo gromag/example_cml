@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options.
+{
+	"name": "Example CML",
+	"dockerComposeFile": "./docker-compose.yml",
+	"context": "..",
+	"service": "develop_example_cml",
+	"workspaceFolder": "/workspace",
+	// This line allows you to use Docker runconfigs if you set "sharedVolumes": false
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+	],
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.profiles.linux": {
+			"bash": {
+				"path": "/bin/bash"
+			}
+		},
+		"python.pythonPath": "/azureml-envs/sklearn-0.24.1/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-azuretools.vscode-docker",
+		"ms-python.vscode-pylance",
+		"mhutchie.git-graph",
+		"nwallace.createguid",
+		"ms-python.python"
+	]
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip install -r requirements.txt",
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "vscode"
+}
