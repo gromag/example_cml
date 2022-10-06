@@ -11,5 +11,3 @@ services:
       context: ../
       dockerfile: ./docker/Dockerfile
     command: /bin/sh -c "while sleep 1000; do :; done"
-    ports:
-      - 5018:80
