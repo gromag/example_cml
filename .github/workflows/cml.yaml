@@ -9,25 +9,14 @@ jobs:
   run:
     runs-on: [ubuntu-latest]
     # container: docker://dvcorg/cml-py3:latest
-    container: docker://iterativeai/cml
     steps:
       - uses: actions/checkout@v2
-      # - uses: actions/setup-python@v2
-      # - uses: iterative/setup-cml@v1
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # echo "START PYTHON VERSION"
-          # echo "python version:" $(python --version)
-          # echo "python3 version:" $(python3 --version)
-          # echo "Which python:" $(which python)
-          # echo "Which python3:" $(which python3)
-          # echo "pip version:" $(pip --version)
-          # echo "END PYTHON VERSION"
-          # # apt-get install python3-venv
-          # python3 -m venv .venv
-          # source .venv/bin/activate
           pip install --upgrade pip 
           pip install -r requirements.txt
           echo "TRAINING STARTING"
