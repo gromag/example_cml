@@ -1,5 +1,10 @@
 name: model-training
-on: [push]
+on:
+  push:
+    paths:
+    - '**.py'
+    - 'requirements.txt'
+    - '.github/**'
 jobs:
   run:
     runs-on: [ubuntu-latest]
