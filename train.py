@@ -1,8 +1,6 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
-import json
-import os
 import numpy as np
 
 # Read in data
@@ -12,7 +10,7 @@ X_test = np.genfromtxt("data/test_features.csv")
 y_test = np.genfromtxt("data/test_labels.csv")
 
 # Fit a model
-depth = 2
+depth = 8
 clf = RandomForestClassifier(max_depth=depth)
 clf.fit(X_train, y_train)
 

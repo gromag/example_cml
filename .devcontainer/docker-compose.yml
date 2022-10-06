@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  develop_example_cml:
+    image: example_cml
+    # This allows to run docker within docker which is needed to interact with Azure ACR
+    privileged: true
+    volumes:
+      - ..:/workspace:cached
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    command: /bin/sh -c "while sleep 1000; do :; done"
