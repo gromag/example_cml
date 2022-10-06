@@ -20,7 +20,11 @@ jobs:
           echo "START PYTHON VERSION"
           echo "python version:" $(python --version)
           echo "python3 version:" $(python3 --version)
+          echo "Which python:" $(which python)
+          echo "Which python3:" $(which python3)
+          echo "pip version:" $(pip --version)
           echo "END PYTHON VERSION"
+          apt-get install python3-venv
           python3 -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip 
